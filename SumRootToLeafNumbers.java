@@ -49,3 +49,22 @@ class Solution {
         return res;
     }
 }
+
+
+//Recursion
+
+class Solution {
+    public int sumNumbers(TreeNode root) {
+        if(root == null) return 0;
+        return helper(root, 0);
+    }
+    private int helper(TreeNode root, int currSum){
+        if(root == null) return 0;
+        if(root.left == null && root.right == null) return currSum * 10 + root.val;
+        
+        int left = helper(root.left, currSum*10 + root.val);
+        int right = helper(root.right, currSum*10 + root.val);
+        return left+right;
+    }
+}
+
