@@ -88,3 +88,25 @@ class Solution {
         helper(root.right, currSum);
     }
 }
+
+
+
+class Solution {
+    int result = 0;
+    public int sumNumbers(TreeNode root) {
+        if(root == null) return 0;
+        helper(root, 0);
+        return result;
+    }
+    private void helper(TreeNode root, int currSum){
+        if(root == null) return;
+        
+        if(root.left == null && root.right == null) {
+            result += currSum * 10 + root.val;
+            return;
+        }
+        
+        helper(root.left, currSum * 10 + root.val);
+        helper(root.right, currSum * 10 + root.val);
+    }
+}
